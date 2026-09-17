@@ -1,24 +1,37 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { ArrowRight, BookOpen, BriefcaseBusiness, HeartHandshake, ShieldCheck, Sparkles, Stethoscope, UsersRound } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { BenefitGrid, CTABanner, PlaceholderPortrait, SectionHeading, learningTopics } from "@/components/site-sections";
+import trainingHero from "@/assets/dental-training-hero.jpg";
+import handsOn from "@/assets/hands-on-training.jpg";
+import classroom from "@/assets/classroom-learning.jpg";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
-  component: Index,
+  head: () => ({ meta: [{ title: "Dental Assisting Education | Advanced Dental Assisting" }, { name: "description", content: "Explore professional, hands-on dental assisting education and take the next step toward learning more." }, { property: "og:title", content: "Advanced Dental Assisting Education" }, { property: "og:description", content: "Professional dental assisting education and training for prospective students." }, { property: "og:type", content: "website" }, { property: "og:url", content: "/" }, { name: "twitter:card", content: "summary_large_image" }], links: [{ rel: "canonical", href: "/" }] }),
+  component: HomePage,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
-function Index() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
+function HomePage() {
+  const topicIcons = [BookOpen, HeartHandshake, BriefcaseBusiness, ShieldCheck, Stethoscope, Sparkles, UsersRound];
+  return <>
+    <section className="relative min-h-[calc(100svh-5rem)] overflow-hidden bg-hero text-hero-foreground">
+      <img src={trainingHero} alt="Dental assisting students receiving hands-on instruction in a training lab" width={1600} height={1104} className="absolute inset-0 h-full w-full object-cover object-center" />
+      <div className="absolute inset-0 bg-hero-overlay" />
+      <div className="site-container relative flex min-h-[calc(100svh-5rem)] items-center py-16"><div className="animate-rise max-w-3xl"><p className="eyebrow text-hero-accent">Professional dental assisting education</p><h1 className="mt-5 font-display text-5xl leading-[1.02] md:text-7xl lg:text-[5.4rem]">Start Your Journey in Dental Assisting</h1><p className="mt-6 max-w-2xl text-lg leading-8 text-hero-muted md:text-xl">Build practical knowledge and skills through a professional dental assisting education and training experience.</p><div className="mt-9 flex flex-col gap-3 sm:flex-row"><Button asChild variant="light" size="lg"><Link to="/interest">Apply Now <ArrowRight /></Link></Button><Button asChild variant="heroOutline" size="lg"><Link to="/about">Learn About the Program</Link></Button></div><div className="mt-12 grid gap-3 border-t border-primary-foreground/25 pt-6 text-sm font-semibold text-hero-muted sm:grid-cols-3"><span>Professional Training</span><span>Hands-On Learning</span><span>Career-Focused Education</span></div></div></div>
+    </section>
+
+    <section className="py-20 lg:py-28"><div className="site-container grid items-center gap-12 lg:grid-cols-2 lg:gap-20"><div className="relative"><img src={handsOn} alt="Student learning dental instrument preparation with an instructor" loading="lazy" width={1312} height={1008} className="aspect-[5/4] w-full rounded-lg object-cover" /><div className="absolute -bottom-5 -right-3 bg-primary px-6 py-5 text-primary-foreground md:right-6"><p className="font-display text-2xl">Learn by doing.</p><p className="mt-1 text-xs text-primary-soft">Guided, practical education</p></div></div><div><SectionHeading eyebrow="A clear path forward" title="Your Path to a Career in Dental Assisting" text="Advanced Dental Assisting is designed to introduce prospective students to the knowledge, practical skills, and professional environment of dental assisting. The program experience centers on learning, guided practice, and preparation for next steps." /><Button asChild variant="link" className="mt-6 h-auto p-0"><Link to="/about">Learn More About the Program <ArrowRight /></Link></Button></div></div></section>
+
+    <section className="bg-muted py-20 lg:py-28"><div className="site-container"><SectionHeading eyebrow="Why choose this path" title="Education built around the way you learn" text="A welcoming training experience that combines foundational knowledge with practical context." /><BenefitGrid /></div></section>
+
+    <section className="py-20 lg:py-28"><div className="site-container"><SectionHeading centered eyebrow="Explore the curriculum" title="What Will You Learn?" text="Build a broad introduction to the skills, tools, and professional habits found in dental assisting." /><div className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">{learningTopics.map(([title, text], index) => { const Icon = topicIcons[index]; return <article key={title} className={`border border-border bg-card p-7 transition-transform hover:-translate-y-1 ${index === 6 ? "lg:col-start-2" : ""}`}><Icon className="size-6 text-primary" /><h3 className="mt-6 text-lg font-bold">{title}</h3><p className="mt-3 text-sm leading-6 text-muted-foreground">{text}</p></article>; })}</div><div className="mt-10 text-center"><Button asChild variant="outline" size="lg"><Link to="/course-information">View Course Information <ArrowRight /></Link></Button></div></div></section>
+
+    <section className="bg-hero text-hero-foreground"><div className="grid lg:grid-cols-2"><img src={classroom} alt="Dental assisting students learning together in a modern lab" loading="lazy" width={1312} height={1008} className="h-full min-h-[28rem] w-full object-cover" /><div className="flex items-center px-6 py-16 md:px-14 lg:px-20"><div className="max-w-xl"><p className="eyebrow text-hero-accent">The program experience</p><h2 className="mt-4 font-display text-4xl md:text-6xl">Learn. Practice. Prepare.</h2><p className="mt-6 leading-8 text-hero-muted">Students explore dental assisting through a mix of guided instruction and practical learning. The experience is intended to help make an unfamiliar professional setting feel more understandable, approachable, and connected to real responsibilities.</p><Button asChild variant="heroOutline" size="lg" className="mt-8"><Link to="/course-information">Explore the Learning Experience</Link></Button></div></div></div></section>
+
+    <section className="py-20 lg:py-28"><div className="site-container"><SectionHeading centered eyebrow="How it works" title="Three simple next steps" /><div className="relative mt-14 grid gap-8 md:grid-cols-3"><div className="absolute left-[16%] right-[16%] top-6 hidden h-px bg-border md:block" />{[["01","Learn About the Program"],["02","Submit Your Interest"],["03","Take the Next Step"]].map(([num,title]) => <div key={num} className="relative text-center"><span className="mx-auto grid size-12 place-items-center rounded-full bg-primary text-sm font-bold text-primary-foreground">{num}</span><h3 className="mt-5 text-lg font-bold">{title}</h3></div>)}</div><div className="mt-10 text-center"><Button asChild size="lg"><Link to="/interest">I&apos;m Interested <ArrowRight /></Link></Button></div></div></section>
+
+    <section className="bg-secondary py-20 lg:py-28"><div className="site-container"><SectionHeading eyebrow="Your instructors" title="Meet Your Instructors" text="Learn more about the people who guide the program experience." /><div className="mt-12 grid gap-6 md:grid-cols-2">{[["Dr. Warsame","Owner / Clinical Instructor"],["Yaqub Ibrahim","Course Instructor / Coordinator"]].map(([name,role]) => <article key={name} className="grid overflow-hidden border border-border bg-card sm:grid-cols-[0.8fr_1fr]"><PlaceholderPortrait name={name} /><div className="flex flex-col justify-end p-7"><p className="text-xs font-bold uppercase tracking-[0.14em] text-primary">{role}</p><h3 className="mt-2 font-display text-3xl">{name}</h3><p className="mt-4 text-sm leading-6 text-muted-foreground">Biography content will be added here when provided by the program.</p></div></article>)}</div><Button asChild variant="outline" size="lg" className="mt-8"><Link to="/team">Meet the Team <ArrowRight /></Link></Button></div></section>
+    <CTABanner />
+    <section className="py-16"><div className="site-container grid gap-8 md:grid-cols-[1fr_auto] md:items-center"><SectionHeading eyebrow="Get in touch" title="Have Questions?" text="We welcome your questions about Advanced Dental Assisting." /><div className="grid gap-3 text-sm"><a className="font-bold text-primary" href="tel:614-619-7763">614-619-7763</a><a className="font-bold text-primary" href="mailto:advanceddentalassistant@gmail.com">advanceddentalassistant@gmail.com</a><a className="text-muted-foreground" href="#instagram-placeholder">Follow us on Instagram</a></div></div></section>
+  </>;
 }

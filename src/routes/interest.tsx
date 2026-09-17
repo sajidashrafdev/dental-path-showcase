@@ -1,0 +1,8 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { ExternalLink } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { InterestForm } from "@/components/site-forms";
+import { PageHero, SectionHeading } from "@/components/site-sections";
+
+export const Route = createFileRoute("/interest")({ head: () => ({ meta: [{ title: "Interest & Apply | Advanced Dental Assisting" }, { name: "description", content: "Tell Advanced Dental Assisting about your interest in the program through this frontend prototype form." }, { property: "og:title", content: "Interested in Advanced Dental Assisting?" }, { property: "og:description", content: "Take the first step by sharing your interest in the program." }, { property: "og:type", content: "website" }, { property: "og:url", content: "/interest" }, { name: "twitter:card", content: "summary_large_image" }], links: [{ rel: "canonical", href: "/interest" }] }), component: InterestPage });
+function InterestPage(){return <><PageHero title="Interested in Advanced Dental Assisting?" text="Take the first step by telling us about your interest in the program."/><section className="py-20 lg:py-28"><div className="site-container grid gap-12 lg:grid-cols-[0.65fr_1.35fr]"><div><SectionHeading eyebrow="Your next step" title="Tell us what you would like to know" text="Complete the form to share your questions and areas of interest. This prototype does not store or send your information."/><Button variant="outline" className="mt-7" onClick={()=>document.getElementById("interest-form")?.scrollIntoView({behavior:"smooth"})}>Complete the Interest Form <ExternalLink/></Button></div><div id="interest-form"><InterestForm/></div></div></section></>}
