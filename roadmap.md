@@ -6,4 +6,4 @@
 - [x] Add role selection and scroll-to-application interactions
 - [x] Build frontend-only application form with CV validation
 - [x] Add Foods Valley metadata, contact links, and brand styling
-- [ ] Verify desktop and mobile layouts and application flow
+- [x] Verify desktop and mobile layouts and application flow
