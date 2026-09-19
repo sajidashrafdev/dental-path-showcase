@@ -14,6 +14,8 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CourseInformationRouteImport } from './routes/course-information'
 import { Route as InterestRouteImport } from './routes/interest'
+import { Route as OurProgramRouteImport } from './routes/our-program'
+import { Route as ProgramRouteImport } from './routes/program'
 import { Route as TeamRouteImport } from './routes/team'
 
 const IndexRoute = IndexRouteImport.update({
@@ -41,6 +43,16 @@ const InterestRoute = InterestRouteImport.update({
   path: '/interest',
   getParentRoute: () => rootRouteImport,
 } as any)
+const OurProgramRoute = OurProgramRouteImport.update({
+  id: '/our-program',
+  path: '/our-program',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProgramRoute = ProgramRouteImport.update({
+  id: '/program',
+  path: '/program',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TeamRoute = TeamRouteImport.update({
   id: '/team',
   path: '/team',
@@ -53,6 +65,8 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/course-information': typeof CourseInformationRoute
   '/interest': typeof InterestRoute
+  '/our-program': typeof OurProgramRoute
+  '/program': typeof ProgramRoute
   '/team': typeof TeamRoute
 }
 export interface FileRoutesByTo {
@@ -61,6 +75,8 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/course-information': typeof CourseInformationRoute
   '/interest': typeof InterestRoute
+  '/our-program': typeof OurProgramRoute
+  '/program': typeof ProgramRoute
   '/team': typeof TeamRoute
 }
 export interface FileRoutesById {
@@ -70,15 +86,31 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/course-information': typeof CourseInformationRoute
   '/interest': typeof InterestRoute
+  '/our-program': typeof OurProgramRoute
+  '/program': typeof ProgramRoute
   '/team': typeof TeamRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/about' | '/contact' | '/course-information' | '/interest' | '/team'
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/course-information'
+    | '/interest'
+    | '/our-program'
+    | '/program'
+    | '/team'
   fileRoutesByTo: FileRoutesByTo
   to:
-    '/' | '/about' | '/contact' | '/course-information' | '/interest' | '/team'
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/course-information'
+    | '/interest'
+    | '/our-program'
+    | '/program'
+    | '/team'
   id:
     | '__root__'
     | '/'
@@ -86,6 +118,8 @@ export interface FileRouteTypes {
     | '/contact'
     | '/course-information'
     | '/interest'
+    | '/our-program'
+    | '/program'
     | '/team'
   fileRoutesById: FileRoutesById
 }
@@ -95,6 +129,8 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   CourseInformationRoute: typeof CourseInformationRoute
   InterestRoute: typeof InterestRoute
+  OurProgramRoute: typeof OurProgramRoute
+  ProgramRoute: typeof ProgramRoute
   TeamRoute: typeof TeamRoute
 }
 
@@ -135,6 +171,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof InterestRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/our-program': {
+      id: '/our-program'
+      path: '/our-program'
+      fullPath: '/our-program'
+      preLoaderRoute: typeof OurProgramRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/program': {
+      id: '/program'
+      path: '/program'
+      fullPath: '/program'
+      preLoaderRoute: typeof ProgramRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/team': {
       id: '/team'
       path: '/team'
@@ -151,6 +201,8 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   CourseInformationRoute: CourseInformationRoute,
   InterestRoute: InterestRoute,
+  OurProgramRoute: OurProgramRoute,
+  ProgramRoute: ProgramRoute,
   TeamRoute: TeamRoute,
 }
 export const routeTree = rootRouteImport
