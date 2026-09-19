@@ -1,11 +1,9 @@
-# Advanced Dental Assisting Website
+# Foods Valley Careers Page
 
-- [x] Build shared header, mobile navigation, footer, and design system
-- [x] Build Home page
-- [x] Build About the Program page
-- [x] Build Course Information page
-- [x] Build Meet the Team page with editable biography and photo placeholders
-- [x] Build frontend Interest / Apply form and success state
-- [x] Build frontend Contact form and success state
-- [x] Add route-specific metadata and working contact links
-- [x] Verify all pages, mobile navigation, responsive layouts, and form interaction
+- [x] Create Foods Valley careers header, navigation, and footer
+- [x] Build careers hero and original food distribution imagery
+- [x] Add culture, benefits, open positions, and company values
+- [x] Add role selection and scroll-to-application interactions
+- [x] Build frontend-only application form with CV validation
+- [x] Add Foods Valley metadata, contact links, and brand styling
+- [x] Verify desktop and mobile layouts and application flow
