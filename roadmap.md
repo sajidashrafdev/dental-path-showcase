@@ -1,9 +1,6 @@
-# Foods Valley Careers Page
+# Advanced Dental Assisting Academy
 
-- [x] Create Foods Valley careers header, navigation, and footer
-- [x] Build careers hero and original food distribution imagery
-- [x] Add culture, benefits, open positions, and company values
-- [x] Add role selection and scroll-to-application interactions
-- [x] Build frontend-only application form with CV validation
-- [x] Add Foods Valley metadata, contact links, and brand styling
-- [x] Verify desktop and mobile layouts and application flow
+- [x] Restore ADA header, mobile navigation, footer, contact details, and design tokens
+- [x] Add Our Program to desktop and mobile navigation
+- [ ] Build the complete 11-section Our Program experience at /our-program and /program
+- [ ] Verify both URLs, navigation, page anchors, and responsive layouts
